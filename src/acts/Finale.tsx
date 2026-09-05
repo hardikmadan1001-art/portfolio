@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowUp } from "lucide-react";
 import Particles from "../components/Particles";
+import PillCta from "../components/PillCta";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -86,13 +86,9 @@ export default function Finale() {
             <p className="mt-6 text-[10px] font-semibold uppercase tracking-[0.42em] text-mist">
               built in the dark · 2026
             </p>
-            <button
-              onClick={backToTop}
-              className="mt-12 flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur-md transition-all duration-300 hover:border-cobalt-glow/70 hover:bg-cobalt/20"
-            >
-              Back to the top
-              <ArrowUp className="h-4 w-4" />
-            </button>
+            <div className="mt-12">
+              <PillCta small label="Back to the top" onClick={backToTop} />
+            </div>
           </motion.div>
 
           {/* faint watermark */}

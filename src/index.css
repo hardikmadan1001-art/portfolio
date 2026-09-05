@@ -137,6 +137,117 @@
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
+/* ---- splash curtain ---- */
+@keyframes splash-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+@keyframes splash-down {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+@keyframes splash-hide {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* ---- pill CTA (expanding background + sliding circle) ---- */
+.pill-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  padding: 8px;
+  gap: 12px;
+}
+.pill-cta-bg {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 8px;
+  width: calc(100% - 8px - 8px - 54px - 12px);
+  border-radius: 9999px;
+  background: #f4f1e8;
+  z-index: 0;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pill-cta:hover .pill-cta-bg {
+  width: calc(100% - 16px);
+}
+.pill-cta-text {
+  position: relative;
+  z-index: 1;
+  color: #111;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 14px 36px;
+  white-space: nowrap;
+}
+.pill-cta-circle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #3fa9e8;
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pill-cta:hover .pill-cta-circle {
+  transform: translateX(-7px);
+}
+
+/* small variant (menu/footer) */
+.pill-cta-sm {
+  padding: 6px;
+  gap: 8px;
+}
+.pill-cta-sm .pill-cta-bg-sm {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 8px;
+  width: calc(100% - 8px - 8px - 38px - 8px);
+  border-radius: 9999px;
+  background: #f4f1e8;
+  z-index: 0;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pill-cta-sm:hover .pill-cta-bg-sm {
+  width: calc(100% - 12px);
+}
+.pill-cta-text-sm {
+  position: relative;
+  z-index: 1;
+  color: #111;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 32px;
+  white-space: nowrap;
+}
+.pill-cta-circle-sm {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #3fa9e8;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.pill-cta-sm:hover .pill-cta-circle-sm {
+  transform: translateX(-4px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-rev,
