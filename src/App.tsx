@@ -3,6 +3,7 @@ import NoiseOverlay from "./components/NoiseOverlay";
 import AudioToggle from "./components/AudioToggle";
 import Hero from "./acts/Hero";
 import CobaltAct from "./acts/CobaltAct";
+import TsHero from "./acts/TsHero";
 import Showcase from "./acts/Showcase";
 import World from "./acts/World";
 import Projects from "./acts/Projects";
@@ -28,6 +29,9 @@ import Finale from "./acts/Finale";
 export default function App() {
   return (
     <main className="relative overflow-x-clip bg-ink font-manrope text-white antialiased">
+      {/* TS hero page — pasted portfolio ported into the existing stack. */}
+      <TsHero />
+
       <Splash />
       <NoiseOverlay />
       <AudioToggle />
