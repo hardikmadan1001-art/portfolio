@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@400;500;600;700&family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -7,15 +7,9 @@
   --font-marck: "Marck Script", cursive;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: #000;
@@ -32,22 +26,62 @@ body {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
   mix-blend-mode: overlay;
 }
 
-/* Luxury button */
-.btn-continue {
-  @apply px-5 py-3 md:px-10 md:py-7 border border-white/40 text-white text-[12px] md:text-[18px] font-italiana uppercase tracking-widest;
-  @apply rounded-full transition-all duration-500 ease-out cursor-pointer;
-  @apply bg-black/20 backdrop-blur-sm;
-  @apply hover:bg-white/10 hover:border-white/80 hover:backdrop-blur-[48px] hover:text-white;
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+/* Glitch keyframes */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, 1px); }
+  80% { transform: translate(2px, -1px); }
+  100% { transform: translate(0); }
+}
+@keyframes glitch-slice {
+  0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, 0); }
+  25% { clip-path: inset(20% 0 60% 0); transform: translate(3px, 0); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(-1px, 0); }
+  75% { clip-path: inset(60% 0 20% 0); transform: translate(2px, 0); }
+  100% { clip-path: inset(80% 0 0 0); transform: translate(-3px, 0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Red section gradient fade at top */
-.red-fade-top {
-  @apply absolute top-0 left-0 w-full h-[120px] bg-gradient-to-b from-[#FF0000] to-transparent pointer-events-none;
+.animate-glitch { animation: glitch 0.3s ease-in-out 3; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 3s linear infinite; background-size: 200% 100%; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+
+/* Skip to content visually hidden */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border-width: 0;
 }
